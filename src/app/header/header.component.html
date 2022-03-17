@@ -1,0 +1,21 @@
+<!-- Header with links that route to the different components -->
+<h1>Hello Fresh</h1>
+<!-- If a user is currently logged in, display a message with their name -->
+<div *ngIf='helper.userLoggedIn'>
+    <p>Welcome, {{helper.getFirstName()}} {{helper.getLastName()}}</p>
+</div>
+<!-- Links -->
+<div>
+    <a routerLink=''>Menu</a><br>
+    <!-- Only show these links if a user is NOT logged in -->
+    <div *ngIf='!helper.userLoggedIn'>
+        <a routerLink='login'>Login</a><br>
+        <a routerLink='register'>Register</a><br><br>
+    </div>
+    <!-- Only show these links if a user is logged in -->
+    <div *ngIf='helper.userLoggedIn'>
+        <button (click)='logout()'>Logout</button><br>
+        <a routerLink='userInfo'>User Info</a><br>
+        <a routerLink='cart'>Cart</a>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<!-- Cart page -->
+<h2>Cart</h2>
+<!-- Display meals in cart -->
+<div *ngFor='let meal of helper.cart'>
+    <!-- Meal details -->
+    <p>{{meal.dish}} ${{meal.price}}</p>
+</div>

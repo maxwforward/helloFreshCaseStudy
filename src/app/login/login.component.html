@@ -1,0 +1,14 @@
+<!-- Login page -->
+<h2>Login</h2>
+<!-- Login form -->
+<form [formGroup]='loginForm' (ngSubmit)='login()'>
+    <label>Username</label><br>
+    <input type='text' formControlName='username'><br>
+    <label>Password</label><br>
+    <input type='password' formControlName='password'><br>
+    <button type='submit'>Login</button>
+    <!-- Display message if login fails -->
+    <div *ngIf='loginFailed'>
+        <p>Username or password is incorrect, please try again</p>
+    </div>
+</form>

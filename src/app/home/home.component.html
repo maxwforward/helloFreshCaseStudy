@@ -1,0 +1,42 @@
+<!-- Display the menu -->
+<h2>Meals offered this week:</h2>
+<!-- Search for ingredients -->
+<h5>Search for ingredients</h5>
+<form [formGroup]='searchForm' (ngSubmit)='searchMenu()'>
+    <input type='text' formControlName='ingredient'>
+    <button type='submit'>Search</button>
+</form><br>
+<!-- Filtered menu containing search results -->
+<div *ngIf='search'>
+    <!-- For each meal on the menu, display the details -->
+    <div *ngFor='let meal of searchResults'>
+        <hr>
+        <!-- Meal details -->
+        <h3>{{meal.dish}}</h3>
+        <img src='{{meal.pic}}'>
+        <p>Price: ${{meal.price}}</p>
+        <p>Ingredients: {{meal.ingredients}}</p>
+        <p>Tags: {{meal.tags}}</p>
+        <!-- Only show this button if a user is logged in -->
+        <div *ngIf='helper.userLoggedIn'>
+            <button (click)='addMealToCart(meal.id)'>Add to Cart</button><br><br>
+        </div>
+    </div>
+</div>
+<!-- Entire menu -->
+<div *ngIf='!search'>
+    <!-- For each meal on the menu, display the details -->
+    <div *ngFor='let meal of menu'>
+        <hr>
+        <!-- Meal details -->
+        <h3>{{meal.dish}}</h3>
+        <img src='{{meal.pic}}'>
+        <p>Price: ${{meal.price}}</p>
+        <p>Ingredients: {{meal.ingredients}}</p>
+        <p>Tags: {{meal.tags}}</p>
+        <!-- Only show this button if a user is logged in -->
+        <div *ngIf='helper.userLoggedIn'>
+            <button (click)='addMealToCart(meal.id)'>Add to Cart</button><br><br>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<!-- Register page -->
+<h2>Register</h2>
+<!-- Register form -->
+<form [formGroup]='registerForm' (ngSubmit)='register()'>
+    <label>First name</label><br>
+    <input type='text' formControlName='firstName'><br>
+    <label>Last name</label><br>
+    <input type='text' formControlName='lastName'><br>
+    <label>Username</label><br>
+    <input type='text' formControlName='username'><br>
+    <label>Password</label><br>
+    <input type='password' formControlName='password'><br>
+    <button type='submit'>Register</button>
+</form>
+<!-- Display a message when a new user is registered -->
+<div *ngIf='userRegistered'>
+    <p>User registered</p>
+</div>

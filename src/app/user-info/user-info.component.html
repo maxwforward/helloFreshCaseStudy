@@ -1,0 +1,41 @@
+<!-- User info page -->
+<h2>User Info</h2>
+<!-- If the user has not decided to edit info, display the info -->
+<div *ngIf='!edit'>
+    <p>Name: {{helper.getFirstName()}} {{helper.getLastName()}}</p>
+    <!-- 
+        <p>Address: {{helper.getHouseNumber()}} {{helper.getStreetName()}}, {{helper.getCity()}}, {{helper.getState()}} {{helper.getZip()}} {{helper.getCountry()}}</p> 
+    -->
+    <button (click)='editInfo()'>Edit Info</button>
+</div>
+<!-- If the user has decided to edit their info, display a form -->
+<div *ngIf='edit'>
+    <form [formGroup]='editInfoForm' (ngSubmit)='updateInfo()'>
+        <label>First name </label>
+        <input type='text' formControlName='firstName'><br>
+        <label>Last name </label>
+        <input type='text' formControlName='lastName'><br>
+        <!--
+            <label>House number </label>
+            <input type='text' formControlName='houseNumber'><br>
+            <label>Street name </label>
+            <input type='text' formControlName='streetName'><br>
+            <label>City </label>
+            <input type='text' formControlName='city'><br>
+            <label>State </label>
+            <input type='text' formControlName='state'><br>
+            <label>Zip code </label>
+            <input type='text' formControlName='zip'><br>
+            <label>Country </label>
+            <input type='text' formControlName='country'><br>
+        -->
+        <label>Username </label>
+        <input type='text' formControlName='username'><br>
+        <label>Password </label>
+        <input type='password' formControlName='password'><br>
+        <button type='submit'>Update</button>
+    </form>
+    <div *ngIf='helper.updating'>
+        <p>Updating, please wait...</p>
+    </div>
+</div>
